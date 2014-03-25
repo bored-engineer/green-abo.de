@@ -2,5 +2,10 @@
   "name": "green-abo.de",
   "main": "index.js",
   "author": "Luke Young",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "sockjs": "~0.3.8",
+    "express": "~3.5.1",
+    "chokidar": "~0.8.2"
+  }
 }
