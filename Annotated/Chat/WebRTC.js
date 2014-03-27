@@ -32,10 +32,13 @@ if (navigator.mozGetUserMedia) {
 	attachMediaStream = function(element, stream) {
 		if (typeof element.srcObject !== 'undefined') {
 			element.srcObject = stream;
+			element.play();
 		} else if (typeof element.mozSrcObject !== 'undefined') {
 			element.mozSrcObject = stream;
+			element.play();
 		} else if (typeof element.src !== 'undefined') {
 			element.src = URL.createObjectURL(stream);
+			element.play();
 		} else {
 			console.log('Error attaching stream to element.');
 		}
