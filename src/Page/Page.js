@@ -1,5 +1,6 @@
 // Load in node.js deps
 var fs = require('fs');
+var path = require('path');
 
 // Use jade for rendering
 var jade = require('jade');
@@ -66,7 +67,7 @@ function build(annotated, tab) {
 	page = page.replace('___INCLUDE___', this.name);
 	// Compile with jade
 	var result = jade.compile(page, {
-		filename: 'Content/' + this.name + '.jade',
+		filename: path.join(__dirname, '..', '..', 'Content/' + this.name + '.jade'),
 		pretty: annotated
 	})({
 		assets: annotated ? this.annotated_assets : this.minified_assets,
