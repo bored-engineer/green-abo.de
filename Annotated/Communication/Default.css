@@ -99,6 +99,7 @@
 }
 
 video {
+	height: 240px;
 	-webkit-transition: opacity 1s ease-out;  /* Chrome 1-25, Safari 3.2+ */
        -moz-transition: opacity 1s ease-out;  /* Firefox 4-15 */
          -o-transition: opacity 1s ease-out;  /* Opera 10.50–12.00 */
@@ -109,4 +110,11 @@ video[data-visible=false] {
 }
 video[data-visible=true] {
 	opacity: 1;
+}
+
+.beta {
+	font-weight: bold;
+	vertical-align: super;
+	color: #FF0000;
+	font-size: .7em;
 }

@@ -73,6 +73,11 @@ module.exports = {
 			.setLocation(JSAsset.kLocationBody)
 			.setType(JSAsset.kTypeAnnotated)
 			.setComment('Allows a button to expand menu on mini devices'),
+		// Footer script
+		new JSAsset('Footer.js')
+			.setLocation(JSAsset.kLocationBody)
+			.setType(JSAsset.kTypeAnnotated)
+			.setComment('Repairs the footer location to fix to the bottom'),
 	],
 	// Pages that contain Tabs
 	"Tabs": [
@@ -112,7 +117,7 @@ module.exports = {
 	// Pages that contain a Chat
 	"Chat": [
 		// Chat Default style
-		new CSSAsset('Chat/Default.css')
+		new CSSAsset('Communication/Default.css')
 			.setComment('Sets up the chat boxes on the page'),
 		// SockJS script
 		new JSAsset('/Assets/SockJS/sockjs-0.3.4.min.js')
@@ -120,16 +125,16 @@ module.exports = {
 			.setType(JSAsset.kTypeExternal)
 			.setComment('Loads SockJS library'),
 		// Chat Commands script
-		new JSAsset('Chat/Commands.js')
+		new JSAsset('Communication/Commands.js')
 			.setComment('Creates and parses commands'),
 		// Chat Messages script
-		new JSAsset('Chat/Messages.js')
+		new JSAsset('Communication/Messages.js')
 			.setComment('Creates and cleared messages'),
 		// Chat WebRTC script
-		new JSAsset('Chat/WebRTC.js')
+		new JSAsset('Communication/WebRTC.js')
 			.setComment('Addes WebRTC Support'),
 		// Chat script
-		new JSAsset('Chat/Text.js')
+		new JSAsset('Communication/Text.js')
 			.setComment('Creates the functioning chat area')
 	]
 }

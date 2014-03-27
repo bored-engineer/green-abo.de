@@ -85,6 +85,7 @@ server.on('connection', function(connection) {
 				}
 				break;
 			case "webrtc_query":
+			case "webrtc_decline":
 			case "webrtc_offer":
 			case "webrtc_answer":
 			case "webrtc_candidate":

@@ -17,6 +17,10 @@ $(function() {
 		);
 	}
 
+	// Array of clients by id
+	var clients = {};
+	window.clients = clients;
+
 	// Called when enter/submit it fired on chat
 	function newChat() {
 		// If the socket is open
@@ -63,25 +67,33 @@ $(function() {
 	});
 
 	// Default command, aka error
-	new Command(['audio', 'video'], true, function() {
+	new Command(['video'], true, function() {
 		// Save this
 		var self = this;
 		// Check support
 		if (WebRTC.supported) {
-			// Loop each client in the room
-			$.each(clients, function(id, client) {
-				// TODO: Query support first
-				// Create a new peer connection for each
-				clients[id].peer = new WebRTC.Peer(send, id);
-				// Let's add our own audio/video to the peer
-				clients[id].peer.addUserMedia(self.cmd === 'video', function() {
-					// Create an offer for the peer
-					clients[id].peer.createOffer(self.cmd === 'video');
-				});
-			});			
+			if (Object.keys(clients).length === 0) {
+				new Message('Error', 'There is nobody in the chat to connect video with!', 'error');
+			} else if (Object.keys(clients).length > 1) {
+				new Message('Error', 'There are too many people in the chat to connect video with!', 'error');
+			} else {
+				// Loop each client in the room
+				$.each(clients, function(id, client) {
+					// TODO: Query support first
+					// Create a new peer connection for each
+					clients[id].peer = new WebRTC.Peer(send, id);
+					// Let's add our own audio/video to the peer
+					clients[id].peer.addUserMedia(function() {
+						// Create an offer for the peer
+						clients[id].peer.createOffer();
+					});
+					new Message('Info', 'Opening a video connection with ' + clients[id].name + '!', 'info');
+				});	
+			}
 		} else {
 			// Add an updated message to chat
-			new Message('Error', 'Not supported in your browser', 'error');
+			new Message('Error', 'Video Sharing is not supported in your browser!', 'error');
+			new Message('Error', 'You need to upgrade to one of the latest versions of Chrome, FireFox, or Opera to use this feature.', 'error');
 		}
 	});
 
@@ -91,9 +103,6 @@ $(function() {
 		new Message('Info', 'Connection Successful! Welcome to the the Green Abode chat!', 'green');
 		new Message('Info', 'You\'ve been randomly assigned the name ' + message.src.name + ', use !nick to change it', 'green');
 	});
-
-	// Array of clients by id
-	var clients = {};
 
 	// A new person has joined
 	new Command(['join'], false, function(message) {
@@ -131,9 +140,10 @@ $(function() {
 
 	// A client has left
 	new Command(['leave'], false, function(message) {
-		// If it has an active peer connection
-		if ((peer = clients[message.src.id].peer)) {
-			peer.close();
+		// If it has an active peer connection, close it
+		if (clients[message.src.id].peer) {
+			clients[message.src.id].peer.close();
+			delete clients[message.src.id].peer;
 		}
 		// Remove them from the list
 		delete clients[message.src.id];
@@ -151,14 +161,25 @@ $(function() {
 	new Command(['webrtc_query'], false, function(message) {
 		// Send the status of our support
 		send('webrtc_query', {
-			support: WebRTC.supported
+			support: !WebRTC.supported
 		});
 	});
 
 	// A webrtc offer has been recieved
 	new Command(['webrtc_offer'], false, function(message) {
 		// If we don't have support, just decline and return
-		if (!WebRTC.supported) { send('webrtc_decline'); return; }
+		if (!WebRTC.supported) {
+			// Log that there was a request
+			new Message('Error', clients[message.src.id].name + ' tried to open a video connection with you, but your browser did not support it.', 'error');
+			new Message('Error', 'You need to upgrade to one of the latest versions of Chrome, FireFox, or Opera to use this feature.', 'error');
+			// Decline it
+			send('webrtc_decline', {
+				dst: message.src.id
+			});
+			return;
+		}
+		// Log that there was a request
+		new Message('Info', clients[message.src.id].name + ' has opened a video connection with you!', 'info');
 		// Create a new peer connection
 		clients[message.src.id].peer = new WebRTC.Peer(send, message.src.id);
 		// Now pass it the offer from the peer
@@ -168,7 +189,10 @@ $(function() {
 	// A webrtc offer has been declined by the peer
 	new Command(['webrtc_answer'], false, function(message) {
 		// If we don't have support, just ignore the message
-		if (!WebRTC.supported) { return; }
+		if (!WebRTC.supported) {
+			new Message('Error', 'An error occured when adding ' + message.src.name + ' to the video chat!', 'error');
+			return;
+		}
 		// Verify we have a connection with the peer first
 		if (!clients[message.src.id].peer) { return; }
 		// Pass off to webrtc
@@ -187,7 +211,13 @@ $(function() {
 
 	// A webrtc offer has been declined by the peer
 	new Command(['webrtc_decline'], false, function(message) {
-		console.log(arguments);
+		// Verify we have a connection with the peer first
+		if (!clients[message.src.id].peer) { return; }
+		// Log
+		new Message('Error', 'We were unable to connect to ' + clients[message.src.id].name, 'error');
+		new Message('Error', 'They need to upgrade to one of the latest versions of Chrome, FireFox, or Opera to use the video feature.', 'error');
+		// Cleanup
+		clients[message.src.id].peer.close();
 	});
 
 	// On a message

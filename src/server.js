@@ -30,7 +30,7 @@ app.use(
 
 // Static serve regular anntoated directory
 app.use(
-	'/Annotated',
+	'/Annotated/',
 	express.static(
 		path.join(
 			__dirname,
@@ -68,6 +68,8 @@ app.get('/Minified/:name.js.map', function(req, res, next) {
 	res.set('Content-Type', 'application/json');
 	res.end(pages[name][head ? 'js_head' : 'js_body'].map);
 });
+
+
 
 // Get a annotated file/page
 app.get('/Annotated/:name', function(req, res, next) {
