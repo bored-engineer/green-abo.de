@@ -21,6 +21,7 @@ var modules = require('../Assets/modules');
 // Load in the template
 var template = fs.readFileSync(__dirname + '/../template.jade').toString();
 
+// Navigation pages
 var navs = [];
 
 // Constructor

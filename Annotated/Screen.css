@@ -9,6 +9,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Page title */
 h1 {
 	font-size: 2.8em;
 	text-align: center;
@@ -25,9 +26,10 @@ p {
 	color: rgb(0, 0, 0);
 	margin-bottom: 10px;
 }
+/* Don't pad the last one */
 p:last-of-type { margin-bottom: 0; }
 
-/* Make lists appear correct */
+/* Make lists appear correct in the content */
 .main-content ol, .main-content ul {
 	list-style: disc;
 	margin-left: 28px;
@@ -37,7 +39,7 @@ p:last-of-type { margin-bottom: 0; }
 	font-weight: 200;
 }
 
-/* Credit white background */
+/* Credit white text */
 .credit {
 	color: rgb(255, 255, 255);
 	padding-bottom: 3px;
@@ -105,7 +107,7 @@ b { font-weight: bold; }
 /* Page footer link a */
 .footer a {
 	color: #78be1e;
-	text-decoration: underline;
+	border-bottom: 1px solid #78be1e;
 }
 
 /* Pad images */
@@ -125,11 +127,9 @@ b { font-weight: bold; }
 .pull-right { float: right; }
 
 /* Hidden (don't show) */
-.hidden {
-	display: none;
-}
+.hidden { display: none; }
 
-/* Photo credit (non-carousel) */
+/* Photo credit in a (non-carousel) */
 .photo-credit {
 	font-size: 18px;
 	font-weight: 600;

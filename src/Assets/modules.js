@@ -9,9 +9,21 @@ module.exports = {
 		// Reset style
 		new CSSAsset('Reset.css')
 			.setComment('Reduces browser inconsistencies in things like default line heights, margins and font sizes of headings, etc'),
-		// Grid style
-		new CSSAsset('Grid.css')
+		// Default Grid style
+		new CSSAsset('Grid/Default.css')
 			.setComment('Creates a grid system for positioning elements on the page'),
+		// Small Grid style
+		new CSSAsset('Grid/Small.css')
+			.setSize(CSSAsset.kSizeSmall)
+			.setComment('Adapts the grid for small resolutions'),
+		// Medium Grid style
+		new CSSAsset('Grid/Medium.css')
+			.setSize(CSSAsset.kSizeMedium)
+			.setComment('Adapts the grid for medium resolutions'),
+		// Medium Grid style
+		new CSSAsset('Grid/Large.css')
+			.setSize(CSSAsset.kSizeLarge)
+			.setComment('Adapts the grid for large resolutions'),
 		// Screen style
 		new CSSAsset('Screen.css')
 			.setComment('Sets up the general css for the page'),
