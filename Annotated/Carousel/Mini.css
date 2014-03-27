@@ -1,3 +1,4 @@
+/* Move the credit to the top */
 .carousel-credit {
 	top: 0;
 	bottom: auto;
@@ -5,4 +6,9 @@
 	right: 0;
 	border-radius: 0;
 	text-align: center;
+}
+
+/* Pad less */
+.carousel-container {
+	margin-bottom: 15px;
 }
