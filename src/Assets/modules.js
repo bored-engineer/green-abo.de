@@ -38,6 +38,10 @@ module.exports = {
 		new CSSAsset('Navigation/Small.css')
 			.setSize(CSSAsset.kSizeSmall)
 			.setComment('Optimizes the navigation for small screens'),
+		// Navigation Medium style
+		new CSSAsset('Navigation/Medium.css')
+			.setSize(CSSAsset.kSizeMedium)
+			.setComment('Optimizes the navigation for medium screens'),
 		// Navigation Large style
 		new CSSAsset('Navigation/Large.css')
 			.setSize(CSSAsset.kSizeLarge)
@@ -63,7 +67,12 @@ module.exports = {
 		// CSS JS script
 		new JSAsset('$("body").removeClass("noJS").addClass("JS")')
 			.setType(JSAsset.kTypeInline)
-			.setComment('Marks that JavaScript is enabled in the browser')
+			.setComment('Marks that JavaScript is enabled in the browser'),
+		// Navigation script
+		new JSAsset('Navigation/Navigation.js')
+			.setLocation(JSAsset.kLocationBody)
+			.setType(JSAsset.kTypeAnnotated)
+			.setComment('Allows a button to expand menu on mini devices'),
 	],
 	// Pages that contain Tabs
 	"Tabs": [
@@ -85,7 +94,7 @@ module.exports = {
 			.setComment('Sets up the carousel on the page'),
 		// Carousel Mini style
 		new CSSAsset('Carousel/Mini.css')
-			.setSize(CSSAsset.kSizeSmall)
+			.setSize(CSSAsset.kSizeMini)
 			.setComment('Fixes the carousel on mini resolutions'),
 		// Carousel script
 		new JSAsset('Carousel/Carousel.js')

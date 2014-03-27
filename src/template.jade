@@ -5,7 +5,7 @@ mixin generate_styles(assets)
 			if style.type === CSSAsset.kTypeMinified
 				link(rel='stylesheet', type='text/css', href=style.getPath())
 			else
-				link(rel='stylesheet', type='text/css', media=CSSAsset.getQuery(style.size), href=style.getPath())
+				link(rel='stylesheet', type='text/css', media=style.getQuery(), href=style.getPath())
 			//- Include comment on what it does
 			if !ugly
 				<!-- #{style.comment} -->

@@ -40,8 +40,6 @@
 
 /* Semantic main nav */
 .nav {
-	/* Bring down to center */
-	margin-top: 40px;
 	/* Bold, larger font for nav */
 	font-size: 1.2em;
     font-weight: 600;

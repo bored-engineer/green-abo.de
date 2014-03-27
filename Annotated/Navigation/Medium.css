@@ -1,0 +1,28 @@
+/* Semantic main nav */
+.nav {
+	/* Bring down to center */
+	margin-top: 40px;
+    /* Align to the left */
+    text-align: left;
+    /* Reset the line height */
+    line-height: 1;
+}
+
+/* Ugly css patch for IE8 instead of nth-child(4) */
+.nav-ul > li:first-child + li + li + li {
+	/* Remove newline formatting */
+	clear: none;
+	/* Remove margin */
+	margin-left: 0;
+}
+
+/* Fix chat location */
+.JS .chat-link {
+	left: 195px;
+}
+
+/* Remove space between links to save space */
+.nav-ul > li > a {
+	padding-right: 7px;
+	padding-left: 7px;
+}

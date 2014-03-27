@@ -43,15 +43,17 @@ module.exports = function(page) {
 		var prefix = "";
 		var suffix = "";
 		// Get the query for the size
-		var query = CSSAsset.getQuery(size);
+		var query = sizes[size][0].getQuery(size);
 		// If a query was found
 		if (query) {
 			prefix = "@media " + query + " {";
-			suffix = "}"
+			suffix = "}";
 		}
 		// Wrap with the appropriate prefix and suffix and add to the final css
-		page.css += prefix + css + suffix;
+		page.css += (prefix + css + suffix);
 	});
+	// Minify again
+	page.css = cssmin(page.css);
 	comment += "\nThis process has allowed us to reduce " + total + " HTTP Request(s) to 1 Request.\nIn addition, it has allowed us to reduce the total characters from " + length + " to " + page.css.length + " characters (excluding this comment).\n*/\n\n";
 	page.css = comment + page.css;
 	// Create the asset for the minified css

@@ -73,7 +73,7 @@ b { font-weight: bold; }
 
 /* Make links green */
 .main-content a {
-	text-decoration: underline;
+	border-bottom: 1px solid #78be1e;
 	color: rgb(120, 190, 30);
 }
 

@@ -34,9 +34,9 @@ CSSAsset.prototype.getPath = function(fs) {
 }
 
 // Return the media query to match the given size
-CSSAsset.getQuery = function(size) {
+CSSAsset.prototype.getQuery = function() {
 	// Different match for each size
-	switch(size) {
+	switch(this.size) {
 		case CSSAsset.kSizeNone:
 			return null;
 			break;

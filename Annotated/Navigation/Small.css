@@ -1,25 +1,20 @@
-/* Special case for small devices to still show full menu without expanding it */
-@media (min-width: 768px) and (max-width: 991px) {
+/* Main navigation */
+.nav {
+	/* Reposition higher up */
+	margin-top: 8px;
+	/* Space the lines out furthur */
+	line-height: 2.35em;
+	/* Center the lines instead of left */
+	text-align: center;
+}
 
-	/* Main navigation */
-	.nav {
-		/* Reposition higher up */
-		margin-top: 8px;
-		/* Space the lines out furthur */
-		line-height: 2.35em;
-		/* Center the lines instead of left */
-		text-align: center;
-	}
+/* Ugly css patch for IE8 instead of nth-child(4) */
+.nav-ul > li:first-child + li + li + li {
+	clear: both;
+	margin-left: 17px;
+}
 
-	/* Ugly css patch for IE8 instead of nth-child(4) */
-	.nav-ul > li:first-child + li + li + li {
-		clear: both;
-		margin-left: 17px;
-	}
-
-	/* Fix center on small */
-	.JS .chat-link {
-		left: 225px;
-	}
-
+/* Fix center on small */
+.JS .chat-link {
+	left: 225px;
 }
