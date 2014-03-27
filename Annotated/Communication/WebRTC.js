@@ -188,6 +188,7 @@ WebRTC.Peer.prototype.addUserMedia = function(cb) {
 			$("#localVideo").one('loadeddata', function() {
 				// Display videos
 				$("#videos").attr("data-enabled", "true");
+				$("#chat-area").attr("data-video", "true");
 				// Done
 				cb();
 				// In 1 second, fade in
@@ -277,6 +278,7 @@ WebRTC.Peer.prototype.close = function(message) {
 				WebRTC.localStream = null;
 				// Close videos
 				$("#videos").attr("data-enabled", "false");
+				$("#chat-area").attr("data-video", "false");
 			}, 1000);
 		}
 	}
