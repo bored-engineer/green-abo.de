@@ -1,0 +1,25 @@
+/* Headers for the calculator */
+.calc-header {
+	padding: 9px;
+	background-color: rgb(120, 190, 30);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;	
+}
+
+h2 {
+	color: rgb(255, 255, 255);
+	font-size: 1.4em;
+	font-weight: 400;
+}
+
+input:disabled {
+	color: rgb(0, 0, 0);
+}
+
+.calc, .calc-warning {
+	display: none;
+}
+
+.noJS .calc-warning, .JS .calc {
+	display: block;
+}

@@ -1,0 +1,23 @@
+section.grid.container
+	.shadow-box.page-content
+		.main-content
+			p.
+				The Green Abode chat area allows you to communicate with other homeowners and ask questions.
+			p.
+				Please do not abuse the chat area, or you will be banned. 
+			p.
+				Commands:
+			ul
+				li.
+					<b>!nick [username]</b> - Change your username
+				li.
+					<b>!audio</b> - Add audio to the chat
+				li.
+					<b>!video</b> - Add video to the chat
+	.shadow-box.page-content.chat-container
+		.main-content
+			.chat-area#chat-area
+		.chat-cmd
+			input.chat#chat(type='text', placeholder='Chat here')
+			button.chat-submit#chat-submit="Send"
+		

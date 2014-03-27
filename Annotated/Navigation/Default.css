@@ -1,0 +1,161 @@
+/* Contains brand and main navigation */
+.topbar {
+    /* Top green line on page */
+    border-top: 4px solid rgb(120, 190, 30);
+    /* White background for brand and main nav */
+    background: rgb(255, 255, 255);
+    /* Nice bottom shadow */
+    box-shadow: 0 2px 7px rgba(0,0,0,0.2);
+}
+
+/* If no JS, no carousel, so a thin border instead */
+.noJS .topbar {
+    /* Thin bottom line on topbar */
+    border-bottom: 1px solid rgb(180, 180, 180);
+}
+
+/* The brand contains */
+.brand {
+	/* Use brand to space navbar so it changes nicely on mini devices */
+	height: 95px;
+}
+
+/* Main logo "Green Abode" */
+.brand-logo {
+	/* Use em so it scales with document */
+	font-size: 2em;
+	/* Standard green color */
+	color: rgb(120, 190, 30);
+	/* Use inline-block so padding works */
+	display: inline-block;
+	/* Push down to center */
+	padding-top: 25px;
+}
+
+/* Tiny logo "Because there's no Planet B" */
+.brand-sublogo {
+	/* Standard dark gray */
+	color: rgb(50, 50, 50);
+}
+
+/* Semantic main nav */
+.nav {
+	/* Bring down to center */
+	margin-top: 40px;
+	/* Bold, larger font for nav */
+	font-size: 1.2em;
+    font-weight: 600;
+    /* Standard light gray */
+    color: rgb(120, 120, 120);
+}
+
+/* Navigation list elements */
+.nav-ul > li {
+	/* Should be inline to appear as one row */
+	display: inline;
+	/* Float to left to hide whitespace */
+	float: left;
+}
+
+/* Nav links */
+.nav-ul > li > a {
+	/* Proper appearance */
+	padding: 6px 8px;
+	border-radius: 5px;
+	/* White border for now (changes on hover) */
+	border: 1px solid rgb(255, 255, 255);
+	/* Progressive enhancement for transitions */
+	-webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+	-moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+	-ms-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    -o-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+/* The first nav link */
+.nav-ul > li:first-child > a {
+	/* Don't pad (extra space for no reason) */
+	margin-left: 0;
+}
+
+/* Nav links that are hovered */
+.nav-ul > li > .nav-inactive:hover {
+	/* Indicate the hover */
+    background: rgb(240, 240, 240);
+    border-color: rgb(221, 221, 221);
+}
+
+/* Active navigation links */
+.nav-active {
+	/* Standard green color */
+	color: rgb(120, 190, 30);
+	/* Defualt cursor (no pointer) */
+	cursor: default;
+}
+
+/* Navigation expand button */
+.nav-expand {
+	/* Position in the upper right */
+	position: absolute;
+	top: 33px;
+	right: 30px;
+	/* Pad the inside */
+	padding: 9px 10px;
+	/* Clear the button styling */
+	background: none;
+	/* Slight border */
+	border: 1px solid rgb(120, 120, 120);
+	border-radius: 4px;
+	/* Don't display by default */
+	display: none;
+}
+
+/* Button focus */
+.nav-expand:focus {
+	/* No annoying outline */
+	outline: 0;
+}
+
+/* Bar icon */
+.icon-bar {
+	/* Fill some space */
+	width: 22px;
+	height: 2px;
+	/* With a nice radius */
+	border-radius: 1px;
+	/* Nice darkish background */
+	background: rgb(120, 120, 120);
+	/* Pad space for next one */
+	margin-bottom: 4px;
+}
+
+/* The last icon bar within a group */
+.icon-bar:last-child {
+	/* No margin on the last child */
+	margin-bottom: 0;
+}
+
+/* Chat functionality (only if JS supported) */
+.chat-link {
+	display: none;
+}
+.JS .chat-link {
+	width: 175px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 195px;
+	padding: 9px;
+	background-color: rgb(120, 190, 30);
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+/* Fix coloring of the text */
+.chat-link > p {
+	text-decoration: underline;
+	text-align: center;
+	line-height: 1.2em;
+	color: rgb(255, 255, 255);
+	font-weight: 700;
+}

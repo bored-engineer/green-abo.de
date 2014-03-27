@@ -1,0 +1,80 @@
+/* Hidden tab */
+.tab-hidden {
+	display: none;
+}
+
+/* Tabs container */
+.tabs {
+	/* Force height */
+	height: 45px;
+	/* Center vertically */
+	line-height: 45px;
+	/* Nice gray background */
+	background-color: rgb(64, 64, 64);
+	/* Border radius in upper left and right only */
+	border-radius: 5px 5px 0 0;
+}
+
+/* Nice light border */
+.tab {
+	/* Fallback for non alpha support */
+	border-right: 1px solid rgb(83, 83, 83);
+	/* Alpha support */
+	border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+/* No border on last element */
+.tabs > .tab:last-child { border-right: none; }
+
+/* Postion tab text */
+.tab > a { 
+	padding-left: 14px;
+	text-align: left;
+}
+
+/* Border radius on proper link elements at ends */
+.tabs > .tab:first-child > a { border-radius: 5px 0 0 0; }
+.tabs > .tab:last-child > a { border-radius: 0 5px 0 0; }
+
+/* Link for navigation */
+.tab > a {
+	/* Fill tab */
+	display: block;
+	width: 100%;
+	height: 100%;
+	/* Larger White text */
+	color: rgb(255, 255, 255);
+	font-size: 1.4em;
+	/* Hand pointer */
+	cursor: pointer;
+	cursor: hand;
+	/* Slightly bold */
+	font-weight: 400;
+	/* Relative position for :after element's use */
+	position: relative;
+}
+
+/* Lighter gray to illustrate hover */
+.tab > a:hover { background-color: rgb(90, 90, 90); }
+
+/* Correct green active color */
+.tab > a.active{ background-color: rgb(120, 190, 30); }
+
+/* Nice indicator on active link */
+.tab > a.active:after {
+	/* Force size & position */
+	content: "";
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	position: absolute;
+	/* Default to hidden for no transform support */
+	bottom: -20px;
+	/* Position a little to the right from the left */
+	left: 90px;
+	/* Make it a triangle and move up */
+	-webkit-transform: rotate(60deg) skewY(-30deg) translate(-32px, 19px) scale(0.8);
+	-moz-transform: rotate(60deg) skewY(-30deg) translateX(-32px) translateY(19px) scale(0.8);
+	-ms-transform: rotate(60deg) skewY(-30deg) translateX(-32px) translateY(19px) scale(0.8);
+	transform: rotate(60deg) skewY(-30deg) translateX(-32px) translateY(19px) scale(0.8);
+}

@@ -1,0 +1,31 @@
+.grid.container
+	header.shadow-box.page-header
+		img.team-photo(src="/Assets/Images/Team.png", alt='Team Photo')
+		a(name="tabs")
+	section.shadow-box.page-content
+		nav.tabs
+			.grid-col-1-3.tab
+				a(href="Luke#tabs", class=(tab == 'Luke' ? 'active' : ''))="Luke"
+			.grid-col-1-3.tab
+				a(href="Joseph#tabs", class=(tab == 'Joseph' ? 'active' : ''))="Joseph"
+			.grid-col-1-3.tab
+				a(href="Trenton#tabs", class=(tab == 'Trenton' ? 'active' : ''))="Trenton"
+		article.main-content(class=(tab == "Luke" ? "" : "hidden"), data-tab='Luke')
+			p.
+				Hi, I'm Luke. I'm a 17 year old senior. I developed the main framework of the website and the build system found <a href="https://github.com/innoying/BPA-Website/" target="_blank">here</a>. I developed the majority of the CSS, JS, and HTML that makes up the framework of the site. Most of my other work can be found on my <a href="http://github.com/innoying" target="_blank">GitHub</a>.
+		article.main-content(class=(tab == "Joseph" ? "" : "hidden"), data-tab='Joseph')
+			p.
+				Hi, my name is Joseph. I am 17 and a highschool senior. My role in producing the website was mainly design and layout as well as some of the content. I was also reponsible for much of the presentation of our website. I have enjoyed working in this team. This experiance has taught me many technical aspects of making a professional website. I also had fun exploring the creative side of this process such as web page design flow and navigation. As for experiance, I mainly work with Java and C++. I have had various experiances learning computer science such as taking AP Computer Science, Honors Java, and extracurriculars such as an IDTech camp at MIT.
+		article.main-content(class=(tab == "Trenton" ? "" : "hidden"), data-tab='Trenton')
+			p.
+				Hello, my name is Trenton. I'm 17 and in 12th grade. My role in producing this website was small HTML coding, some design, information gathering, and PowerPoint creation. Other minor jobs done by me includes finding images and organizing the layout. I enjoyed the process of focusing more on other aspects of website creation instead of mostly coding like I did last year. I learned many things from creating this website such as what colors go together well and what don’t, to how to manage my time better. As for experience, I had various experiences learning many different computer languages such as Java and C++ from AP Computer Science, Honors Java, and extracurriculars such as an IDTech camp at MIT. I also competed in this same event in 2013 and went to state.
+	section.shadow-box.page-content
+		article.main-content
+			p.
+				This website was created as part of a BPA competition:
+			p.
+				<b>Chapter:</b> Wayzata 30-0084<br />
+				<b>School:</b> Wayzata High School<br />
+				<b>City:</b> Plymouth<br />
+				<b>State:</b> Minnesota<br />
+				<b>Theme:</b> A Greener Home with Alternative Energy Solutions<br />

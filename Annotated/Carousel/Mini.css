@@ -1,0 +1,11 @@
+/* Special case for mini devices to position credit */
+@media (max-width: 767px) {
+	.carousel-credit {
+		top: 0;
+		bottom: auto;
+		left: 0;
+		right: 0;
+		border-radius: 0;
+		text-align: center;
+	}
+}

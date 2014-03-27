@@ -1,0 +1,103 @@
+/* Special case for mini devices to move menu correctly */
+@media (max-width: 767px) {
+
+	/* Given JS, don't show immediatly */
+	.JS .nav {
+		display: none;
+	}
+
+	/* Given JS, show the expand button */
+	.JS .nav-expand {
+		display: block;
+	}
+
+	/* Main brand */
+	.brand {
+		/* Fill page to push nav down */
+		width: 100%;
+		/* Add a small padding to the brand */
+		padding: 0 14px;
+	}
+
+	/* Main navigation */
+	.nav {
+		/* Fill page */
+		width: 100%;
+		/* Put a small border on the bottom of the brand */
+		border-top: 1px solid rgb(180, 180, 180);
+		/* No more top padding */
+		margin-top: 0;
+	}
+
+	/* Navigation list elements */
+	.nav-ul > li {
+		/* Display as a top down list now */
+		display: block;
+		/* Don't float anymroe */
+		float: none;
+	}
+
+	/* Nav links */
+	.nav-ul > li > a {
+		/* Don't pad left anymore */
+		margin-left: 0;
+		/* Pad a little more for looks */
+		padding: 10px 14px;
+		/* Remove the border */
+		border: none;
+		/* Bigger height and text */
+		display: block;
+		height: 40px;
+		font-size: 1.2em;
+		/* Bottom border (lighter) */
+		border-radius: 0;
+		border-bottom: 1px solid rgb(230, 230, 230);
+	}
+
+	/* Nav after element (chevron) */
+	.nav-ul > li > a:after {
+		/* Use a greater than for a chevron */
+		content: ">";
+		/* Position to the right */
+		float: right;
+	}
+
+	/* Subnav left */
+	.subnav > ul {
+		text-align: left;
+	}
+
+	/* Subnav vertical */
+	.subnav > ul > li {
+		display: block;
+		line-height: 1.7em;
+	}
+
+	/* Subnav padding gone */
+	.subnav > ul > li > a {
+		margin-left: 8px !important;
+		font-size: 1.4em;
+	}
+
+	/* Move location of chat link */
+	.JS .chat-link {
+		left: 0;
+		top: 100px;
+		width: 100%;
+		border-radius: 0;
+	}
+	.JS .chat-link > p {
+		text-decoration: none;
+	}
+	.JS .chat-link > p > a:after {
+		content: '>';
+		position: absolute;
+		right: 14px;
+	}
+
+	/* Add space for the chat link */
+	.JS .brand {
+		margin-bottom: 45px;
+	}
+
+}

@@ -1,0 +1,171 @@
+/* No spacing on main container */
+.main-container {
+	margin-top: 0;
+}
+
+/* Contains .carousel and it's items */
+.carousel-container {
+	/* Nice background */
+	background-color: rgb(120, 120, 120);
+	/* Pad the bottom before the content */
+	margin-bottom: 35px;
+}
+
+/* If no JS, remove the carousel */
+.noJS .carousel-container {
+	display: none;
+}
+
+/* Contains images ul */
+.carousel {
+	/* Have no height as padding will do it */
+	height: 0;
+	/* Half height as width to match images */
+	padding-top: 50%; 
+	/* Add a position relative to help position the ul */
+	position: relative;
+	/* Hide the overflow images */
+	overflow: hidden;
+	/* Don't let user select things and break them */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	/* Make position relative for the credit */
+	position: relative;
+}
+
+/* Unordered carousel list */
+.carousel > ul {
+	/* Fill the padded .carousel */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Don't put bullets or other formatting */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contains the images */
+.carousel > ul > li {
+	/* Place all images in the same place */
+	position: absolute;
+	/* Don't display by deafult */
+	display: none;
+	/* Fill page */
+	width: 100%;
+}
+
+/* The actual images in the carousel */
+.carousel > ul > li > img {
+	/* Fill the container */
+	width: 100%;
+}
+
+/* Next and Prev buttons */
+.carousel-prev, .carousel-next {
+	/* Position in within, but on top the images */
+    position: absolute;
+    top: 0;
+    z-index: 30;
+    /* Make it big enough to be easily clicked */
+    width: 60px;
+    height: 100%;
+    /* Fix for IE unclickable transparent backgrounds */
+	background-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
+}
+
+/* Contains the actual arrow */
+.carousel-prev > span, .carousel-next > span {
+	/* Pretty white arrow */
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-shadow: 0 0 1px #000;
+    /* Use known good Arial in case web fonts failed */
+    font: 80px Arial, sans-serif;
+    /* Position absoluly within the parent */
+	position: absolute;
+	height: 100px;
+	margin-top: -50px;
+	padding: 0 20px;
+	top: 50%;
+}
+
+/* Position on the left and right */
+.carousel-prev > span { left: 0; }
+.carousel-next > span { right: 0; }
+.carousel-prev { left: 0; text-align: left; }
+.carousel-next { right: 0; text-align: right; }
+
+/* Special (weird) fix for IE 7 */
+.ie7 .carousel-prev {
+	position: static;
+}
+
+/* Contains the pagination links for a carousel */
+.carousel-pagination {
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	bottom: 0px;
+}
+
+/* A link to a page in the carousel */
+.carousel-pagination > a {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	background: transparent;
+	/* Fix for IE unclickable transparent backgrounds */
+	background-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
+	border: 2px solid rgb(255, 255, 255);
+	margin: 1px 3px;
+	border-radius: 7px;
+}
+
+/* A link to a page in the carousel */
+.carousel-pagination > .carousel-pagination-active {
+	background: rgb(255, 255, 255);
+	margin-top: 0;
+	margin-bottom: 0;
+	width: 16px;
+	height: 16px;
+	border-radius: 8px;
+}
+
+/* Credit to original image author */
+.carousel-credit {
+	border-top-left-radius: 5px;
+	padding: 6px;
+	background: rgb(50, 50, 50);
+	background: rgba(50, 50, 50, .6);
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	z-index: 90;
+}
+
+/* Position image */
+.carousel-credit > img {
+	margin-top: 2px;
+}
+
+/* Make text white so it's readable */
+.carousel-credit > span {
+	margin-top: -2px;
+	padding-left: 4px;
+	font-size: 20px;
+	font-weight: 600;
+	color: rgb(255, 255, 255) !important;
+}
+
+/* Underline link */
+.carousel-credit > span > a {
+	text-decoration: underline;
+}

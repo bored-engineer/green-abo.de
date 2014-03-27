@@ -1,0 +1,78 @@
+/* Actual chat messages */
+.chat-area {
+	height: 300px;
+	margin-bottom: 50px;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+/* Contains all chat stuff */
+.chat-container {
+	position: relative;
+}
+
+/* Chat command fill area */
+.chat-cmd {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+}
+
+/* Chat input box */
+.chat {
+	font-size: 1.6em;
+	font-weight: 400;
+	width: 100%;
+	height: 100%;
+	color: rgb(75, 75, 75);
+	padding: 9px;
+	padding-right: 140px;
+	border: none;
+	margin: 0;
+	outline: none;
+	border-top: 1px solid #ccc;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+/* Chat submit button */
+.chat-submit {
+	font-size: 1.6em;
+	font-weight: 400;
+	color: rgb(0, 0, 0);
+	z-index: 99;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 140px;
+	outline: none;
+	height: 100%;
+	border: none;
+	border-left: 1px solid #ccc;
+	background: none;
+	border-bottom-right-radius: 5px;
+}
+
+/* Origin of message */
+.chat-origin {
+	font-weight: 600;
+}
+.chat-origin[data-type=green] {
+	display: none;
+}
+
+.chat-msg[data-type=green] {
+	font-style: italic;
+}
+
+.chat-origin[data-type=error], .chat-msg[data-type=error] {
+	color: rgb(255, 100, 100);
+}
+.chat-origin[data-type=green], .chat-msg[data-type=green] {
+	color: rgb(120, 190, 30);
+}
+.chat-origin[data-type=info], .chat-msg[data-type=info] {
+	color: rgb(100, 100, 255);
+}

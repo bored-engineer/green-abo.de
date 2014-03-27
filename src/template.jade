@@ -1,0 +1,79 @@
+mixin generate_styles(assets)
+	//- Loop each style
+	each style in assets
+		if style instanceof CSSAsset
+			if style.type === CSSAsset.kTypeMinified
+				link(rel='stylesheet', type='text/css', href=style.getPath())
+			else
+				link(rel='stylesheet', type='text/css', media=CSSAsset.getQuery(style.size), href=style.getPath())
+			//- Include comment on what it does
+			if !ugly
+				<!-- #{style.comment} -->
+				
+mixin generate_scripts(assets, head)
+	//- Loop each style
+	each script in assets
+		if script instanceof JSAsset
+			//- Make sure location matches that passed in 
+			if (script.location === JSAsset.kLocationHead) === head
+				//- If inline, make inline, else make href
+				if script.type === JSAsset.kTypeInline
+					script(type='text/javascript')!=script.value
+				else 
+					script(type='text/javascript', src=script.getPath())
+				//- Include comment on what it does
+				if !ugly
+					<!-- #{script.comment} -->
+		
+
+doctype html
+//[if lt IE 7]><html class="ie6" lang="en"><![endif]
+//[if IE 7]><html class="ie7" lang="en"><![endif]
+//[if IE 8]><html class="ie8" lang="en"><![endif]
+//[if gt IE 8]><!
+html(lang="en")
+	//<![endif]
+	head
+		if ugly
+			___REPLACE___
+		meta(charset='UTF-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		link(rel="shortcut icon", href="/Assets/Images/favicon.ico", type="image/x-icon")
+		link(rel="icon", href="/Assets/Images/favicon.ico", type="image/x-icon")
+		title=page.title + " | Green Abode"
+		+generate_styles(assets)
+		+generate_scripts(assets, true)
+		//- Media query and html5 support for IE < 9 (8,7,6, etc);
+		if (!ugly)
+			//[if lt IE 9]>
+					<script src='//cdn.jsdelivr.net/html5shiv/3.7.0/html5shiv.js' type='text/javascript'></script>
+					<script src='//cdn.jsdelivr.net/respond/1.4.2/respond.min.js' type='text/javascript'></script>
+					<![endif]
+		else 
+			//[if lt IE 9]><script src='//cdn.jsdelivr.net/html5shiv/3.7.0/html5shiv.js' type='text/javascript'></script><script src='//cdn.jsdelivr.net/respond/1.4.2/respond.min.js' type='text/javascript'></script><![endif]
+	body(class='noJS')
+		.topbar
+			.container.grid
+				.pull-left.brand
+					a.brand-logo(href='/')='Green Abode'
+					.brand-sublogo='Because there\'s no Planet B'
+				.chat-link
+					p.
+						<a href="/Chat">Chat with Homeowners</a>
+				#nav-expand.nav-expand
+					.icon-bar
+					.icon-bar
+					.icon-bar
+				nav#nav.pull-right.nav
+					ul.nav-ul
+						each nav_page in nav
+							li
+								a(href=(tab === undefined ? '' : '../') + nav_page.name, class=((page.nav_id === nav_page.nav_id) ? 'nav-active' : 'nav-inactive'))=nav_page.title
+		.main-container
+			include ___INCLUDE___
+		footer.footer
+			.container.grid
+				p.credit
+					span.
+						This site designed, built, and maintained by <a href="#{(tab === undefined ? '' : '../')}About-Us/Luke">our team</a> as part of the <a target="_blank" href="http://www.bpa.org/">BPA</a> <i>Web Site Design</i> competition.
+		+generate_scripts(assets, false)

@@ -1,0 +1,40 @@
+/* Special case for mini devices to move menu correctly */
+@media (max-width: 767px) {
+
+	/* Adjust tabs height automatically now */
+	.tabs {
+		height: auto;
+	}
+
+	/* Clearfix for floats */
+	.tabs:after {
+	    content: "";
+	    display: table;
+	    clear: both;
+	}
+	
+	/* Adjust tabs to fill page now */
+	.tab {
+		/* Become 100% to fill page */
+		width: 100%;
+		/* Remove border */
+		border-right: none;
+		/* Fallback for non alpha support */
+		border-bottom: 1px solid rgb(83, 83, 83);
+		/* Alpha support */
+		border-bottom: 1px solid rgba(255,255,255,0.2);
+	}
+	.tab:last-of-type { border-bottom: none; }
+
+	/* Border radius on proper link elements at ends */
+	.tabs > .tab:first-child > a { border-radius: 5px 5px 0 0; }
+	.tabs > .tab:last-child > a { border-radius: 0; }
+
+	/* Display a tab indicator */
+	.tab > a.active:after {
+		display: none;
+	}
+
+	/* TODO: Add a chevron for tabs on mini */
+
+}

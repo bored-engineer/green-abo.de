@@ -1,0 +1,142 @@
+/* Main body */
+body {
+    /* Use Helvetica, Arial, Lucida Grande, san-serif as fallback fonts for proxima-nova */
+    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    background-color: #eee;
+    /* Antialias fonts so they look nice */
+    -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+	font-size: 2.8em;
+	text-align: center;
+	padding-top: 10px;
+	font-weight: 400;
+	padding-bottom: 20px;
+	color: rgb(50, 50, 50);
+}
+
+/* Pad below paragraph tags */
+p {
+	font-size: 21px;
+	font-weight: 200;
+	color: rgb(0, 0, 0);
+	margin-bottom: 10px;
+}
+p:last-of-type { margin-bottom: 0; }
+
+/* Make lists appear correct */
+.main-content ol, .main-content ul {
+	list-style: disc;
+	margin-left: 28px;
+	margin-bottom: 7px;
+	color: rgb(0, 0, 0);
+	font-size: 21px;
+	font-weight: 200;
+}
+
+/* Credit white background */
+.credit {
+	color: rgb(255, 255, 255);
+	padding-bottom: 3px;
+	padding-top: 3px;
+}
+
+/* Make bold elements bold in HTML5 */
+b { font-weight: bold; }
+
+/* Default to some space for the shadow */
+.main-container {
+	margin-top: 10px;
+}
+
+/* Shadow box */
+.shadow-box {
+	border-radius: 5px;
+	box-shadow: 0 1px 6px rgba(100,100,100,0.4);
+	background-color: rgb(255, 255, 255);
+	margin: 5px;
+	margin-bottom: 25px;
+}
+
+/* Pad the content and make it bigger */
+.main-content {
+	font-size: 1.3em;
+	font-weight: 400;
+	color: rgb(75, 75, 75);
+	padding: 20px;	
+}
+
+/* Make links green */
+.main-content a {
+	text-decoration: underline;
+	color: rgb(120, 190, 30);
+}
+
+/* Center the page header and add a margin */
+.page-header {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* Fix h1 padding */
+.page-header > h1 {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+/* Automatically fill page if possible */
+.page-header > .header-img {
+	width: 100%;
+}
+
+/* Page footer */
+.footer {
+	border-top: 5px solid #282828;
+	padding: 8px;
+	background: #404040;
+	color: rgb(200, 200, 200);
+	text-align: center;
+	font-size: 1.2em;
+}
+
+/* Page footer link a */
+.footer a {
+	color: #78be1e;
+	text-decoration: underline;
+}
+
+/* Pad images */
+.header-img {
+	padding: 10px 10px 6px 10px;
+}
+
+/* Make the team photo fill the page */
+.team-photo {
+	max-width: 100% !important;
+	margin-bottom: -3px;
+	border-radius: 5px;
+}
+
+/* Pull elements left or right */
+.pull-left { float: left; }
+.pull-right { float: right; }
+
+/* Hidden (don't show) */
+.hidden {
+	display: none;
+}
+
+/* Photo credit (non-carousel) */
+.photo-credit {
+	font-size: 18px;
+	font-weight: 600;
+	display: inline-block;
+	padding-left: 5px;
+	padding-bottom: 10px;
+}
+.photo-credit > a {
+	text-decoration: underline;
+}

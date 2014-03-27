@@ -1,0 +1,15 @@
+/* Special case for large devices to fix chat positioning */
+@media (min-width: 1200px) {
+
+	/* Main navigation */
+	.JS .chat-link {
+		left: 290px;
+	}
+
+	/* Nav links */
+	.nav-ul > li > a {
+		/* Pad from other links */
+		margin-left: 8px;
+	}
+
+}

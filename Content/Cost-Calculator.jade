@@ -1,0 +1,75 @@
+section.grid.container
+	.shadow-box.page-content
+		.main-content
+			p.
+				The Green Abode cost calculator is a simplified version of the cost calculator by the <a href="http://www.nrel.gov/analysis/tech_lcoe.html" target="_blank">National Renewable Energy Laboratory</a>.
+			p. When you use this page all calculations are done on your computer and the results are not logged or saved in any way.
+	.calc-warning
+		.shadow-box.page-content
+			header.calc-header
+				h2.
+					Error
+			.main-content
+				p.
+					Unfortuantly the Green Abode cost calculator currently requires JavaScript. Please enable JavaScript or view any of the other pages on our site.
+	.calc
+		.shadow-box.page-content
+			header.calc-header
+				h2.
+					Financial
+			.main-content
+				span.
+					Period (Years)
+				input#period(type='number', min='5', max='60', step='5', value='20')
+		.shadow-box.page-content
+			header.calc-header
+				h2.
+					Renewable Energy System Cost and Performance
+			.main-content
+				span.
+					Capital Cost ($/kW)
+				input#capital_cost(type='number', min='0', max='10000', step='100', value='1050')
+				br
+				span.
+					Capacity Factor (%)
+				input#capacity_factor(type='number', min='0', max='100', step='10', value='43.6')
+				br
+				span.
+					Fixed O&amp;M Cost ($/kW-yr)
+				input#fixed_oandm_cost(type='number', min='0', max='300', step='30', value='25')
+				br
+				span.
+					Variable O&amp;M Cost ($/kWh)
+				input#variable_oandm_cost(type='number', min='0', max='0.05', step='.001', value='0.002')
+				br
+				span.
+					Heat Rate (Btu/kWh)
+				input#heat_rate(type='number', min='0', max='15000', step='1000', value='10000')
+				br
+				span.
+					Fuel Cost ($/MMBtu)
+				input#fuel_cost(type='number', min='0', max='20', step='2', value='8')
+		.shadow-box.page-content
+			header.calc-header
+				h2.
+					Current's Utility Electricity Cost
+			.main-content
+				span.
+					Electricity Price (cents/kWh)
+				input#electrical_cost(type='number', min='0', max='50', step='5', value='12')
+				br
+				span.
+					Cost Escalation Rate (%)
+				input#electrical_escalation_rate(type='number', min='0.1', step='3', max='25', value='3.0')
+		.shadow-box.page-content
+			header.calc-header
+				h2.
+					Results
+			.main-content
+				span.
+					Levelized Cost of Utility Electricity (cents/kWh)
+				input#average_electrical_cost(type='text', disabled, value='16.1')
+				br
+				span.
+					Simple Levelized Cost of Renewable Energy (cents/kWh)
+				input#lcoe(type='text', disabled, value='10.7')
