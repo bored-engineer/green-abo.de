@@ -76,3 +76,37 @@
 .chat-origin[data-type=info], .chat-msg[data-type=info] {
 	color: rgb(100, 100, 255);
 }
+
+/* Hide the videos by default */
+.videos {
+	white-space: nowrap;
+	text-align: center;
+	background-color: #000;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	-webkit-transition: height 1s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+       -moz-transition: height 1s ease-out;  /* Firefox 4-15 */
+         -o-transition: height 1s ease-out;  /* Opera 10.50–12.00 */
+            transition: height 1s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+.videos[data-enabled=false] {
+	height: 0px;
+}
+.videos[data-enabled=true] {
+	height: 240px;
+}
+
+video {
+	-webkit-transition: opacity 1s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+       -moz-transition: opacity 1s ease-out;  /* Firefox 4-15 */
+         -o-transition: opacity 1s ease-out;  /* Opera 10.50–12.00 */
+            transition: opacity 1s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+video[data-visible=false] {
+	opacity: 0;
+}
+video[data-visible=true] {
+	opacity: 1;
+}

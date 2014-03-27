@@ -116,6 +116,7 @@ module.exports = {
 			.setComment('Sets up the chat boxes on the page'),
 		// SockJS script
 		new JSAsset('/Assets/SockJS/sockjs-0.3.4.min.js')
+			.setLocation(JSAsset.kLocationHead)
 			.setType(JSAsset.kTypeExternal)
 			.setComment('Loads SockJS library'),
 		// Chat Commands script

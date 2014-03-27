@@ -17,11 +17,30 @@ RTCIceCandidate = (
 	window.webkitRTCIceCandidate || 
 	window.RTCIceCandidate
 );
-getUserMedia = (
-	navigator.getUserMedia || 
-	navigator.mozGetUserMedia || 
-	navigator.webkitGetUserMedia
-).bind(navigator);
+
+// Make a function for atttaching to a video
+var getUserMedia = function() {};
+var attachMediaStream;
+if (navigator.mozGetUserMedia) {
+	getUserMedia = navigator.mozGetUserMedia.bind(navigator);
+	attachMediaStream = function(element, stream) {
+		element.mozSrcObject = stream;
+		element.play();
+	};
+} else if (navigator.webkitGetUserMedia) {
+	getUserMedia = navigator.webkitGetUserMedia.bind(navigator);
+	attachMediaStream = function(element, stream) {
+		if (typeof element.srcObject !== 'undefined') {
+			element.srcObject = stream;
+		} else if (typeof element.mozSrcObject !== 'undefined') {
+			element.mozSrcObject = stream;
+		} else if (typeof element.src !== 'undefined') {
+			element.src = URL.createObjectURL(stream);
+		} else {
+			console.log('Error attaching stream to element.');
+		}
+	};
+}
 
 // If the browser has support for peer connections
 WebRTC.supported = !!(RTCPeerConnection);
@@ -98,28 +117,50 @@ WebRTC.Peer = function(send, dst) {
 
 	// When a new stream (not our own) is added to the peer
 	this.peer.onaddstream = function(evt) {
-		var vid = $("<video style='position: absolute; top: 0; right: 0;'/>");
-		vid.attr('src', URL.createObjectURL(evt.stream));
-		vid.get(0).play();
-		$('body').append(vid);
+		// Create a new video element
+		var vid = $("<video data-visible=false />");
+		// Attach to the stream
+		attachMediaStream(vid.get(0), evt.stream);
+		// Wait for it to load
+		vid.get(0).addEventListener('loadeddata', function() {
+			// Add to dom
+			$("#videos").append(vid);
+			// Transition
+			vid.attr("data-visible", "true");
+		});
 	}
 }
 
 // Add the given media to the peer
-WebRTC.Peer.prototype.addUserMedia = function(video, cb) {
+WebRTC.Peer.prototype.addUserMedia = function(info, cb) {
 	var self = this;
 	// Request access to the proper device(s)
 	getUserMedia({
 		'audio': true,
-		'video': video
+		'video': {
+			'mandatory': {
+				maxHeight: 240,
+				maxWidth: 320 
+			}
+		}
 	}, function (stream) {
-		var vid = $("<video style='position: absolute; top: 0; left: 0;'/>");
-		vid.attr('src', URL.createObjectURL(stream));
-		vid.get(0).play();
-		vid.get(0).volume = 0;
-		$('body').append(vid);
+		// Attach to the stream
+		attachMediaStream($("#localVideo").get(0), stream);
+		// Mute self to avoid feedback
+		$("#localVideo").get(0).volume = 0;
+		// Wait for it to load
+		$("#localVideo").get(0).addEventListener('loadeddata', function() {
+			// Display videos
+			$("#videos").attr("data-enabled", "true");
+			// Done
+			cb();
+			// In 1 second, fade in
+			setTimeout(function() {
+				$("#localVideo").attr("data-visible", "true");
+			}, 1000);
+		});
+		// Add our own stream to our own peer
 		self.peer.addStream(stream);
-		cb();
 	}, error);
 };
 

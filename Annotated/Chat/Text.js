@@ -1,6 +1,6 @@
 // Wait for the page to load
 $(function() {
-	
+
 	// Log that we have started
 	new Message('Info', 'Connecting...', 'green');
 
