@@ -1,7 +1,7 @@
 // Wait for the page to load
 $(function() {
 	function adjust() {
-		var height = 10;
+		var height = 0;
 		height += $(".main-container").outerHeight();
 		height += $(".topbar").outerHeight();
 		height += $('footer').outerHeight();
@@ -15,4 +15,5 @@ $(function() {
 	}
 	$(window).resize(adjust);
 	adjust();
+	window.adjust = adjust();
 });

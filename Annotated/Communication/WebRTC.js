@@ -189,11 +189,13 @@ WebRTC.Peer.prototype.addUserMedia = function(cb) {
 				// Display videos
 				$("#videos").attr("data-enabled", "true");
 				$("#chat-area").attr("data-video", "true");
+				window.adjust();
 				// Done
 				cb();
 				// In 1 second, fade in
 				setTimeout(function() {
 					$("#localVideo").attr("data-visible", "true");
+					window.adjust();
 				}, 1000);
 			});
 			// Add our own stream to our own peer
@@ -279,6 +281,10 @@ WebRTC.Peer.prototype.close = function(message) {
 				// Close videos
 				$("#videos").attr("data-enabled", "false");
 				$("#chat-area").attr("data-video", "false");
+				window.adjust();
+				setTimeout(function() {
+					window.adjust();
+				}, 1000);
 			}, 1000);
 		}
 	}

@@ -61,7 +61,7 @@ $(function() {
 						window.location.hash = '!' + clicked_tab;
 					}
 				}
-
+				window.adjust();
 				// Return false to stop from working since we have js to do it instead
 				return false;
 			});
