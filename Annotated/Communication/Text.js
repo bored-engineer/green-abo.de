@@ -60,13 +60,13 @@ $(function() {
 		Messages.clear();
 	});
 
-	// Default command, aka error
+	// Change nickname
 	new Command(['nick'], true, function(name) {
 		// Send the nick change to the server
 		send('nick', name);
 	});
 
-	// Default command, aka error
+	// Initiate video chat
 	new Command(['video'], true, function() {
 		// Save this
 		var self = this;
@@ -155,6 +155,11 @@ $(function() {
 	new Command(['nick'], false, function(message) {
 		// Put it in chat
 		new Message('Info', message.src.name + ' changed their nickname to ' + message.data, 'info');
+		// Update records (fixes bug #1)
+		$.each(clients, function(id, client) {
+			if(clients[id] === message.src.name)
+				message.src.name = message.data;
+		});
 	});
 
 	// A query of webrtc support has been triggered
